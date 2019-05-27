@@ -1,14 +1,18 @@
 import React from 'react'
-import { Router, browserHistory, Route, IndexRoute } from 'react-router'
+import { render } from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 
+import Header from "../containers/Header"
+import Main from "../containers/Main"
 
 export const App = (props) => {
   return (
-    <div>
-      <p>Hello from the app!</p>
-    </div>
-
-
+      <BrowserRouter>
+        <div>
+          <Header />
+          <Main />
+        </div>
+      </BrowserRouter>
   )
 }
 
