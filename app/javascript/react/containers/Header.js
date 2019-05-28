@@ -11,13 +11,20 @@ class Header extends Component {
   render(){
     return(
       <header>
-        <nav>
-          <ul>
+        <div className="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+          <button className="menu-icon" type="button" data-toggle="example-menu"></button>
+          <div className="title-bar-title">Menu</div>
+        </div>
+
+        <div className="top-bar" id="example-menu">
+          <ul className="menu">
+            <li className="menu-text">Marathon to Mastery</li>
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/activities'>Activities</Link></li>
             <li><Link to='/summary'>Summary</Link></li>
           </ul>
-        </nav>
+        </div>
+
       </header>
     )
   }
