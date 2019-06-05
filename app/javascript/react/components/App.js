@@ -9,7 +9,6 @@ export const App = (props) => {
   return (
       <BrowserRouter>
         <div>
-          <Header />
           <Main />
         </div>
       </BrowserRouter>

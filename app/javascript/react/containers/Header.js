@@ -17,13 +17,23 @@ class Header extends Component {
         </div>
 
         <div className="top-bar" id="example-menu">
-          <ul className="menu">
-            <li className="menu-text">Marathon to Mastery</li>
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/activities'>Activities</Link></li>
-            <li><Link to='/summary'>Summary</Link></li>
-          </ul>
+          <div className="top-bar-left">
+            <ul className="menu">
+              <li className="menu-text">Marathon to Mastery</li>
+              <li><Link to='/'>Home</Link></li>
+              <li><Link to='/'>Activities</Link></li>
+              <li><Link to='/summary'>Summary</Link></li>
+            </ul>
+          </div>
+
+          <div className="top-bar-right" >
+            <ul className="menu">
+              <li><Link to='/users/sign_in'>Sign-in</Link></li>
+              <li><Link to='/users/sign_up'>Sign-up</Link></li>
+            </ul>
+          </div>
         </div>
+
 
       </header>
     )
