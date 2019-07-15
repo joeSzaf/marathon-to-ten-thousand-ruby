@@ -1,4 +1,4 @@
-class ActivtiesController < ApplicationController
+class ActivitiesController < ApplicationController
   def index
   end
 
