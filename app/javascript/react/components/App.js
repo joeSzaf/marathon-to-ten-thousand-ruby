@@ -1,17 +1,17 @@
 import React from 'react'
-import { render } from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
+import { Router, browserHistory, Route, IndexRoute } from 'react-router';
 
-import Header from "../containers/Header"
-import Main from "../containers/Main"
+import ActivityNewContainer from "../containers/ActivityNewContainer"
 
-export const App = (props) => {
-  return (
-      <BrowserRouter>
-        <div>
-          <Main />
-        </div>
-      </BrowserRouter>
+export const App = props => {
+  return(
+    <div>
+      <Router history={browserHistory}>
+        <Route path='/activities' component={ActivityNewContainer} />
+        <Route path='/activities/new' component={ActivityNewContainer} />
+        <Route path='/activities/:id' component={ActivityNewContainer} />
+      </Router>
+    </div>
   )
 }
 
