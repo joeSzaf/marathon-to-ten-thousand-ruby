@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_214947) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
-    t.string "type", null: false
+    t.string "category", null: false
     t.date "date", null: false
     t.float "duration", null: false
     t.text "note"
