@@ -9,7 +9,6 @@ class Api::V1::ActivitiesController < ApiController
 
     activity = Activity.new(activity_params)
     activity.user = current_user
-    binding.pry
 
     if activity.save
       render json: { activity: activity }
@@ -33,7 +32,7 @@ class Api::V1::ActivitiesController < ApiController
   end
 
   def serialized_activities
-    ActiveModel::Serializer::ArraySerializer.new(Activity.all, each_serializer: ActivitySerializer)
+    ActiveModel::Serializer::ArraySerializer.new(Activity.where(user: current_user), each_serializer: ActivitySerializer)
   end
 
 end
