@@ -45,6 +45,9 @@ class HomeContainer extends Component {
         <p>Total hours: { totalHours }</p>
         <p>Total activities: { totalActivities }</p>
         <a href="/activities/new">add activity</a>
+        <div className="addButton">
+          <i className="fas fa-plus fa-2x"></i>
+        </div>
       </div>
     )
   }
