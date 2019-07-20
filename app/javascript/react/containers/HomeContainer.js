@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import moment from 'moment'
 
+import FilterController from "../components/FilterController"
+
 class HomeContainer extends Component {
   constructor(props) {
     super(props)
@@ -14,9 +16,8 @@ class HomeContainer extends Component {
       filteredNumberOfShows: 0
     }
     this.processActivities = this.processActivities.bind(this)
+    this.handleFilterSelect = this.handleFilterSelect.bind(this)
   }
-
-
 
   componentDidMount() {
     fetch('http://localhost:3000/api/v1/activities')
@@ -39,6 +40,13 @@ class HomeContainer extends Component {
         this.processActivities(1, "week", this.state.activities)
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
+  handleFilterSelect(event){
+    this.setState({
+      selected: event.target.text
+    })
+    this.processActivities(1, this.state.selected, this.state.activities)
   }
 
   processActivities(timeUnits, unitOfTime, activities) {
@@ -87,8 +95,13 @@ class HomeContainer extends Component {
         <p>Total activities: { totalActivities }</p>
         <p>Total shows: { this.state.numberOfShows }</p>
         <div className="row">
-          <p><a>week</a> / <a>month</a> / <a>year</a></p>
+          <p><a className="activeFilter">week</a> / <a>month</a> / <a>year</a></p>
         </div>
+        <FilterController
+          selectedUnit = {this.state.selected}
+          options = {["week", "month", "year"]}
+          handleClick = {this.handleFilterSelect}
+        />
         <div>
           <p>Hours since last week: { this.state.filteredActivitiesHours }</p>
           <p>Activities since last week: { this.state.filteredActivities.length }</p>
