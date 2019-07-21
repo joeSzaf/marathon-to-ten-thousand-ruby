@@ -52,7 +52,6 @@ class HomeContainer extends Component {
     let totalActivities = 0
     let totalShows = 0
     let startDate = moment().subtract(timeUnits, unitOfTime)
-    debugger
 
     let filteredActivities = []
     let filteredNumberOfShows = 0
