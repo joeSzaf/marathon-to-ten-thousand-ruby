@@ -35,9 +35,7 @@ class HomeContainer extends Component {
         this.setState({
           activities: body.activities
         })
-      })
-      .then(response => {
-        this.processActivities(1, "week", this.state.activities)
+        this.processActivities(1, this.state.selected, this.state.activities)
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
@@ -46,7 +44,7 @@ class HomeContainer extends Component {
     this.setState({
       selected: event.target.text
     })
-    this.processActivities(1, this.state.selected, this.state.activities)
+    this.processActivities(1, event.target.text, this.state.activities)
   }
 
   processActivities(timeUnits, unitOfTime, activities) {
@@ -54,6 +52,7 @@ class HomeContainer extends Component {
     let totalActivities = 0
     let totalShows = 0
     let startDate = moment().subtract(timeUnits, unitOfTime)
+    debugger
 
     let filteredActivities = []
     let filteredNumberOfShows = 0
