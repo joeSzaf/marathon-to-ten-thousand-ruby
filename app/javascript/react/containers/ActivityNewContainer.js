@@ -1,6 +1,7 @@
 import React from 'react'
 import { Router, browserHistory, Route, IndexRoute } from 'react-router'
 import TextField from '../components/TextField'
+import DateTimeField from '../components/DateTimeField'
 
 class ActivityNewContainer extends React.Component {
   constructor(props) {
@@ -103,12 +104,14 @@ class ActivityNewContainer extends React.Component {
           label="Type of Activity:"
           handleChangeMethod={this.handleChange}
         />
-        <TextField
+
+        <DateTimeField
           name="date"
           content={this.state.date}
           label="Date:"
           handleChangeMethod={this.handleChange}
         />
+
         <TextField
           name="duration"
           content={this.state.duration}
