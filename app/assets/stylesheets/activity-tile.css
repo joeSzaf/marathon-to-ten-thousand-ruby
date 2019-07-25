@@ -1,0 +1,26 @@
+/* https://coolors.co/086788-07a0c3-fff1d0-ffb924-dd1c1a */
+
+.activity-tile {
+  padding: 5px;
+}
+
+.activity-container div:hover {
+  background-color:#E8F6F9;
+}
+
+.activity-tile:nth-of-type(odd) {
+  background-color:#BBE5EE;
+}
+
+.activity-tile:nth-of-type(even) {
+  background-color:#D1EDF4;
+}
+
+.activity-tile p {
+  margin: 0;
+  padding: 0;
+}
+
+.acitivity-notes {
+  font-size: 0.8em;
+}
