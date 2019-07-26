@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import moment from 'moment'
 
 import FilterController from "../components/FilterController"
+import TimeBarChart from "../components/TimeBarChart"
 
 class HomeContainer extends Component {
   constructor(props) {
@@ -110,6 +111,9 @@ class HomeContainer extends Component {
             <i className="fas fa-plus fa-4x"></i>
           </div>
         </a>
+        <TimeBarChart
+          activities={this.state.activities}
+        />
 
       </div>
     )
