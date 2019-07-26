@@ -10,6 +10,7 @@
     "react-dom": "~15.4.2",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
+    "recharts": "^1.6.2",
     "redbox-react": "1.6.0"
   },
   "devDependencies": {
