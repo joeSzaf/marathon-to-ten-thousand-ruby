@@ -14,7 +14,6 @@ const FilterController = props => {
     }
   })
 
-  console.log(links)
   return(
     <div>
       {links}
