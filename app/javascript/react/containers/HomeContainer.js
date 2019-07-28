@@ -118,7 +118,8 @@ class HomeContainer extends Component {
       graphData.push(bar)
     }
 
-    return graphData
+    let sortedGraphData = graphData.sort(function(a, b){return a.name.localeCompare(b.name)})
+    return sortedGraphData
   }
 
   render(){
