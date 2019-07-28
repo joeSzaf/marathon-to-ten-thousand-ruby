@@ -14,10 +14,12 @@ class HomeContainer extends Component {
       activities: [],
       filteredActivities: [],
       filteredActivitiesHours: 0,
-      filteredNumberOfShows: 0
+      filteredNumberOfShows: 0,
+      barChartData: []
     }
     this.processActivities = this.processActivities.bind(this)
     this.handleFilterSelect = this.handleFilterSelect.bind(this)
+    this.processBarChartData = this.processBarChartData.bind(this)
   }
 
   componentDidMount() {
@@ -52,11 +54,12 @@ class HomeContainer extends Component {
     let totalHours = 0
     let totalActivities = 0
     let totalShows = 0
-    let startDate = moment().subtract(timeUnits, unitOfTime)
-
+    let startDate = moment().subtract(timeUnits, unitOfTime).startOf('day').add(1, "day")
     let filteredActivities = []
     let filteredNumberOfShows = 0
     let filteredActivitiesHours = 0
+
+    let barChartData = []
 
     activities.forEach(activity => {
       if (activity.category === 'show') {
@@ -74,14 +77,48 @@ class HomeContainer extends Component {
       }
     })
 
+    barChartData = this.processBarChartData(filteredActivities, startDate)
+
     this.setState({
       filteredActivities: filteredActivities,
       numberOfShows: totalShows,
       totalHours: totalHours,
       filteredNumberOfShows: filteredNumberOfShows,
-      filteredActivitiesHours: filteredActivitiesHours
+      filteredActivitiesHours: filteredActivitiesHours,
+      barChartData: barChartData
     })
 
+  }
+
+  processBarChartData(activities, startDate) {
+    let processedData = {}
+
+    let currentDate = startDate
+
+    activities.forEach(activity => {
+      if (!(activity.date in processedData)) {
+        processedData[activity.date] = {}
+      }
+
+      if (!(activity.category in processedData[activity.date])) {
+        processedData[activity.date][activity.category] = 1
+      } else {
+        processedData[activity.date][activity.category] += activity.duration
+      }
+    })
+
+    let graphData = []
+
+    for (let date in processedData) {
+      let bar = {}
+      bar['name'] = date
+      for (let activityType in processedData[date]) {
+        bar[activityType] = processedData[date][activityType]
+      }
+      graphData.push(bar)
+    }
+
+    return graphData
   }
 
   render(){
@@ -93,9 +130,6 @@ class HomeContainer extends Component {
         <p>Total hours: { this.state.totalHours }</p>
         <p>Total activities: { totalActivities }</p>
         <p>Total shows: { this.state.numberOfShows }</p>
-        <div className="row">
-          <p><a className="activeFilter">week</a> / <a>month</a> / <a>year</a></p>
-        </div>
         <FilterController
           selectedUnit = {this.state.selected}
           options = {["week", "month", "year"]}
@@ -112,7 +146,7 @@ class HomeContainer extends Component {
           </div>
         </a>
         <TimeBarChart
-          activities={this.state.activities}
+          activities={this.state.barChartData}
         />
 
       </div>

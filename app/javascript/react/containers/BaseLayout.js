@@ -10,10 +10,12 @@ const BaseLayout = props => {
 
   return(
     <div>
-      <Route exact path='/activities/new' component={ActivityNewContainer} />
-      <Route path='/activities/:id' component={ActivityShowContainer} />
-      <Route exact path='/activities' component={ActivitiesContainer} />
-      <Route exact path='/' component={HomeContainer} />
+      <Switch>
+        <Route exact path='/activities/new' component={ActivityNewContainer} />
+        <Route path='/activities/:id' component={ActivityShowContainer} />
+        <Route exact path='/activities' component={ActivitiesContainer} />
+        <Route exact path='/' component={HomeContainer} />
+      </Switch>
     </div>
   )
 }
