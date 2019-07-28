@@ -44,7 +44,7 @@ class ActivityNewContainer extends React.Component {
         }
         })
         .then(response => {
-          browserHistory.push('/')
+          window.location.assign("/")
         })
         .catch(error => {
           let formError = { formError: error.message }
