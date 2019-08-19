@@ -1,24 +1,13 @@
-# README
+# Marathon to Mastery
+## How to use
+1. Visit <heroku link>
+2. Sign up for an account and log in
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About
+Back end built with Ruby on Rails.
 
-Things you may want to cover:
+Database management through Rails and Activerecord.
 
-* Ruby version
+Front end in React.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+User authentication via devise.
